@@ -70,6 +70,7 @@ Where:
 - \( $\sigma (x_\text{pred}) )$ \) is a vector of the `uncertainy' in our average predicitons (ie, the variance)
 
 In order to also ensure our model explores the space (useful if there are local optima) it has an improvement threshhold, below wich it will use a different acquisition function:
+
 $$
 x = \text{argmin}\[\sigma(x_\text{pred}))\]
 $$
