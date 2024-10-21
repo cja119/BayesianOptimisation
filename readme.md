@@ -14,6 +14,6 @@ Finally, run the API:
 ```
 streamlit run bayesian_optimisation.py
 ```
-\[
+$$
 A \cdot \sin(B \cdot X - C) + D \cdot \cos(E \cdot X) - F + G \cdot X^2 - H \cdot (\exp(-X) - \exp(X))
-\]
+$$
