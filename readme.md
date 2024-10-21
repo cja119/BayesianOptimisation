@@ -1,8 +1,10 @@
 # Bayesian Optimisation of a Gaussian process
 Here is a small API which demonstrates the power of Baeysian Optimistaion using a Gauss process, on the following equation:
+
 $$
 A \cdot \sin(B \cdot X - C) + D \cdot \cos(E \cdot X) - F + G \cdot X^2 - H \cdot (\exp(-X) - \exp(X))
 $$
+
 This is a challenging equation to optimise due to it being multimodal, having lots of local optima.
 ![Animation](animation.gif)
 
@@ -68,40 +70,4 @@ Where:
 - \( $f(x_{best})$ \) is the best function value so far.
 - \( $f(x)$ \) is the predicted value at point \( $x$ \).
 
-## Bayesian Optimization in Linear Algebra
 
-Given a set of points \( $X = [x_1, x_2, \dots, x_n]$ \) and their corresponding function values \($y = [f(x_1), f(x_2), \dots,(x_n)]$ \), we can use Gaussian Process regression to predict the function at a new point \( $x_*$\).
-
-1. **Compute the Covariance Matrix**: 
-    The covariance matrix \( $K$ \) between the points in \( $X$ \) is computed as:
-    $$
-    K(X, X) = 
-    \begin{pmatrix}
-    K(x_1, x_1) & \dots & K(x_1, x_n) \\
-    \vdots & \ddots & \vdots \\
-    K(x_n, x_1) & \dots & K(x_n, x_n)
-    \end{pmatrix}
-    $$
-
-2. **Compute the Covariance with New Point**:
-    The covariance between the new point \( $x_*$ \) and the existing points \($ X$ \) is:
-    $$
-    k(X, x_*) = 
-    \begin{pmatrix}
-    K(x_1, x_*) \\
-    \vdots \\
-    K(x_n, x_*)
-    \end{pmatrix}
-    $$
-
-3. **Predict the Mean and Variance**:
-    The predicted mean \( $\mu(x_*) $\) and variance \( $\sigma^2(x_*) $\) at the new point \( $x_* $\) are given by:
-
-    $$
-    \mu(x_*) = k(X, x_*)^T K(X, X)^{-1} y
-    $$
-    $$
-    \sigma^2(x_*) = K(x_*, x_*) - k(X, x_*)^T K(X, X)^{-1} k(X, x_*)
-    $$
-
-This gives us both the expected value and uncertainty at the new point \($ x_* $\), allowing us to update our model.
