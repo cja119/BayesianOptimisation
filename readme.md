@@ -76,3 +76,7 @@ x = \text{argmin}\[\sigma(x_\text{pred}))\]
 $$
 
 This chooses the next x value based on that which will provide the greatest reduction in uncertainty in our model.
+
+# Use of Generative Ai
+
+Please note that generative AI has been used in places to generate the code found in this repository. If there are any copyright issues resulting from this, please reach out to me directly.
