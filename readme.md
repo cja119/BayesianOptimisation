@@ -27,13 +27,13 @@ Bayesian Optimization is a method to find the **maximum** (or minimum) of a func
 
 ## Steps in Bayesian Optimization
 
-1. **Model the objective function** using a probabilistic model, usually a Gaussian Process (GP).
+1. **Model the objective function** using a probabilistic model.
 2. **Find the next point** to evaluate by optimizing an **acquisition function** that balances exploration (looking in new areas) and exploitation (looking in known good areas).
 3. **Update the model** with the new data point and repeat.
 
 ## Gaussian Process (GP)
 
-In Bayesian Optimization, we often use a Gaussian Process to model the objective function. A GP assumes that the objective function values follow a multivariate normal distribution.
+As is often the case with Bayesian Optimsiation, we are using a Gauss Process as our probablistic model. 
 
 For any points \( $x_1, x_2, \dots, x_n $\), the function values \( $f(x_1), f(x_2), \dots, f(x_n) $\) are jointly normally distributed:
 
@@ -47,7 +47,7 @@ $$
 
 ### Kernel Function
 
-The kernel function \( K(x, x') \) defines the covariance between two points. A common kernel is the **squared exponential kernel** (RBF kernel):
+The kernel function \( K(x, x') \) defines the covariance between two points. Here we will use the **squared exponential kernel** (RBF kernel):
 
 $$
 K(x, x') = \sigma^2 \exp\left(- \frac{(x - x')^2}{2l^2} \right)
@@ -58,16 +58,17 @@ $$
 
 ## Acquisition Function
 
-The acquisition function tells us where to sample next. One popular acquisition function is **Expected Improvement (EI)**. It aims to maximize the improvement over the best current value.
+The acquisition function tells us where to sample next. For our 
 
 The EI at a point \( x \) is:
 
 $$
-EI(x) = \mathbb{E}\left[ \max(0, f(x) - f(x_{best})) \right]
+EI(x) = \text{argmin}\[(\mu (x_\text{pred}) - n \cdot \sigma(x_\text{pred}))\]
 $$
 
 Where:
-- \( $f(x_{best})$ \) is the best function value so far.
-- \( $f(x)$ \) is the predicted value at point \( $x$ \).
+- \( $\mu (x_\text{pred}) )$ \) is a vector of the Gauss Process' average predictions (accross our X domain)
+- \( $n$ \) is a hyperparameter.
+- \( $\sigma (x_\text{pred}) )$ \) is a vector of the `uncertainy' in our average predicitons (ie, the variance)
 
 
