@@ -39,8 +39,8 @@ $$
 f(x) \sim \mathcal{N}(\mu(x), K(x, x'))
 $$
 
-- \( \mu(x) \): Mean function (often assumed to be zero).
-- \( K(x, x') \): Covariance function or kernel (describes the similarity between points).
+- \($$ \mu(x) \): Mean function (often assumed to be zero).
+- \($$ K(x, x') \): Covariance function or kernel (describes the similarity between points).
 
 ### Kernel Function
 
