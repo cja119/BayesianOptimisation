@@ -58,12 +58,10 @@ $$
 
 ## Acquisition Function
 
-The acquisition function tells us where to sample next. For our 
-
-The EI at a point \( x \) is:
+The acquisition function tells us where to sample next. For our model, we use our uncertainty to help guide our next choice.
 
 $$
-EI(x) = \text{argmin}\[(\mu (x_\text{pred}) - n \cdot \sigma(x_\text{pred}))\]
+x = \text{argmin}\[(\mu (x_\text{pred}) - n \cdot \sigma(x_\text{pred}))\]
 $$
 
 Where:
@@ -71,4 +69,9 @@ Where:
 - \( $n$ \) is a hyperparameter.
 - \( $\sigma (x_\text{pred}) )$ \) is a vector of the `uncertainy' in our average predicitons (ie, the variance)
 
+In order to also ensure our model explores the space (useful if there are local optima) it has an improvement threshhold, below wich it will use a different acquisition function:
+$$
+x = \text{argmin}\[\sigma(x_\text{pred}))\]
+$$
 
+This chooses the next x value based on that which will provide the greatest reduction in uncertainty in our model.
