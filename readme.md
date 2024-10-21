@@ -66,11 +66,11 @@ $$
 
 Where:
 - \($ f(x_{best})$ \) is the best function value so far.
-- \( $f(x) $\) is the predicted value at point \( $x $\).
+- \($ f(x) $\) is the predicted value at point \( $x $\).
 
 ## Bayesian Optimization in Linear Algebra
 
-Given a set of points \( $X = [x_1, x_2, \dots, x_n] $ \) and their corresponding function values \($ y = [f(x_1), f(x_2), \dots,(x_n)]$\), we can use Gaussian Process regression to predict the function at a new point \( $x_* $\).
+Given a set of points \($ X = [x_1, x_2, \dots, x_n] $ \) and their corresponding function values \($ y = [f(x_1), f(x_2), \dots,(x_n)]$\), we can use Gaussian Process regression to predict the function at a new point \( $x_* $\).
 
 1. **Compute the Covariance Matrix**: 
     The covariance matrix \( $ K $ \) between the points in \($ X $\) is computed as:
