@@ -33,14 +33,15 @@ Bayesian Optimization is a method to find the **maximum** (or minimum) of a func
 
 In Bayesian Optimization, we often use a Gaussian Process to model the objective function. A GP assumes that the objective function values follow a multivariate normal distribution.
 
-For any points \( x_1, x_2, \dots, x_n \), the function values \( f(x_1), f(x_2), \dots, f(x_n) \) are jointly normally distributed:
+For any points \( $x_1, x_2, \dots, x_n $\), the function values \( $f(x_1), f(x_2), \dots, f(x_n) $\) are jointly normally distributed:
 
 $$
 f(x) \sim \mathcal{N}(\mu(x), K(x, x'))
 $$
 
-- \($$ \mu(x) \): Mean function (often assumed to be zero).
-- \($$ K(x, x') \): Covariance function or kernel (describes the similarity between points).
+- \( $\mu(x)$ \): Mean function (often assumed to be zero).
+- \( $K(x, x')$ \): Covariance function or kernel (describes the similarity between points).
+- \( $K(x, x')$ \): Covariance function or kernel (describes the similarity between points).
 
 ### Kernel Function
 
@@ -50,8 +51,8 @@ $$
 K(x, x') = \sigma^2 \exp\left(- \frac{(x - x')^2}{2l^2} \right)
 $$
 
-- \( \sigma^2 \): Signal variance.
-- \( l \): Length scale (controls how quickly the function varies).
+- \( $\sigma^2 $\): Signal variance.
+- \( $l $\): Length scale (controls how quickly the function varies).
 
 ## Acquisition Function
 
@@ -69,10 +70,10 @@ Where:
 
 ## Bayesian Optimization in Linear Algebra
 
-Given a set of points \( X = [x_1, x_2, \dots, x_n] \) and their corresponding function values \( y = [f(x_1), f(x_2), \dots, f(x_n)] \), we can use Gaussian Process regression to predict the function at a new point \( x_* \).
+Given a set of points \( $X = [x_1, x_2, \dots, x_n] $\) and their corresponding function values \($ y = [f(x_1), f(x_2), \dots, f(x_n)] $\), we can use Gaussian Process regression to predict the function at a new point \( $x_* $\).
 
 1. **Compute the Covariance Matrix**: 
-    The covariance matrix \( K \) between the points in \( X \) is computed as:
+    The covariance matrix \($ K $\) between the points in \($ X $\) is computed as:
     $$
     K(X, X) = 
     \begin{pmatrix}
@@ -83,7 +84,7 @@ Given a set of points \( X = [x_1, x_2, \dots, x_n] \) and their corresponding f
     $$
 
 2. **Compute the Covariance with New Point**:
-    The covariance between the new point \( x_* \) and the existing points \( X \) is:
+    The covariance between the new point \( $x_*$ \) and the existing points \($ X$ \) is:
     $$
     k(X, x_*) = 
     \begin{pmatrix}
@@ -94,7 +95,7 @@ Given a set of points \( X = [x_1, x_2, \dots, x_n] \) and their corresponding f
     $$
 
 3. **Predict the Mean and Variance**:
-    The predicted mean \( \mu(x_*) \) and variance \( \sigma^2(x_*) \) at the new point \( x_* \) are given by:
+    The predicted mean \( $\mu(x_*) $\) and variance \( $\sigma^2(x_*) $\) at the new point \( $x_* $\) are given by:
 
     $$
     \mu(x_*) = k(X, x_*)^T K(X, X)^{-1} y
@@ -103,4 +104,4 @@ Given a set of points \( X = [x_1, x_2, \dots, x_n] \) and their corresponding f
     \sigma^2(x_*) = K(x_*, x_*) - k(X, x_*)^T K(X, X)^{-1} k(X, x_*)
     $$
 
-This gives us both the expected value and uncertainty at the new point \( x_* \), allowing us to update our model.
+This gives us both the expected value and uncertainty at the new point \($ x_* $\), allowing us to update our model.
